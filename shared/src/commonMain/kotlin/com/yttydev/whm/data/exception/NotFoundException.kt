@@ -1,4 +1,3 @@
 package com.yttydev.whm.data.exception
 
-class NotFoundException {
-}
+class NotFoundException(message: String?) : RuntimeException(message)

@@ -1,3 +1,7 @@
 package com.yttydev.whm.di
 
-val appModule = listOf()
+val appModules = listOf(
+    androidModule,
+    domainModule,
+    dataModule,
+)

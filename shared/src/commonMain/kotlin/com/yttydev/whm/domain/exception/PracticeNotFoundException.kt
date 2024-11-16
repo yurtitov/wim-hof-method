@@ -1,4 +1,3 @@
 package com.yttydev.whm.domain.exception
 
-class PracticeNotFoundException {
-}
+class PracticeNotFoundException(message: String?) : RuntimeException(message)
