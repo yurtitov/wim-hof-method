@@ -1,4 +1,4 @@
-package com.yttydev.whm.presentation.statistics
+package com.yttydev.whm.presentation.profile
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -21,14 +21,13 @@ import wimhofmethod.composeapp.generated.resources.Res
 import wimhofmethod.composeapp.generated.resources.compose_multiplatform
 
 @Composable
-fun StatisticsScreen() {
-    val vm = koinViewModel<StatisticsViewModel>()
+fun ProfileScreen() {
+    val vm = koinViewModel<ProfileViewModel>()
     var showContent by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Statistics screen")
-
+        Text(text = "Exercises screen")
         Button(onClick = { showContent = !showContent }) {
-            Text("Goto Practice")
+            Text("111")
         }
         AnimatedVisibility(showContent) {
             Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -56,12 +55,12 @@ fun StatisticsScreen() {
         }
 
         Button(
-            onClick = vm::onNavigateToProfile,
+            onClick = vm::onNavigateToStatistics,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(all = 8.dp)
         ) {
-            Text("Profile")
+            Text("Statistics")
         }
     }
 }

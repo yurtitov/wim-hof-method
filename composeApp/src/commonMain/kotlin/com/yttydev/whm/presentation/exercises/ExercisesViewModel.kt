@@ -1,4 +1,4 @@
-package com.yttydev.whm.presentation.statistics
+package com.yttydev.whm.presentation.exercises
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,19 +6,19 @@ import com.yttydev.whm.navigation.AppNavigator
 import com.yttydev.whm.navigation.Destination
 import kotlinx.coroutines.launch
 
-class StatisticsViewModel(
+class ExercisesViewModel(
     private val appNavigator: AppNavigator
 ) : ViewModel() {
-
-    fun onNavigateToExercises() {
-        viewModelScope.launch {
-            appNavigator.navigateTo(Destination.ExercisesScreen.fullRoute)
-        }
-    }
 
     fun onNavigateToPractice() {
         viewModelScope.launch {
             appNavigator.navigateTo(Destination.PracticeDetailsScreen.fullRoute)
+        }
+    }
+
+    fun onNavigateToStatistics() {
+        viewModelScope.launch {
+            appNavigator.navigateTo(Destination.StatisticsScreen.fullRoute)
         }
     }
 

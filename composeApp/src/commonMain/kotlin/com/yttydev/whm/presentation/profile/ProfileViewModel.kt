@@ -1,4 +1,4 @@
-package com.yttydev.whm.presentation.statistics
+package com.yttydev.whm.presentation.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,9 +6,9 @@ import com.yttydev.whm.navigation.AppNavigator
 import com.yttydev.whm.navigation.Destination
 import kotlinx.coroutines.launch
 
-class StatisticsViewModel(
+class ProfileViewModel(
     private val appNavigator: AppNavigator
-) : ViewModel() {
+): ViewModel() {
 
     fun onNavigateToExercises() {
         viewModelScope.launch {
@@ -22,9 +22,9 @@ class StatisticsViewModel(
         }
     }
 
-    fun onNavigateToProfile() {
+    fun onNavigateToStatistics() {
         viewModelScope.launch {
-            appNavigator.navigateTo(Destination.ProfileScreen.fullRoute)
+            appNavigator.navigateTo(Destination.StatisticsScreen.fullRoute)
         }
     }
 }
