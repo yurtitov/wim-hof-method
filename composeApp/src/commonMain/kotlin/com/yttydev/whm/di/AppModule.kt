@@ -2,7 +2,7 @@ package com.yttydev.whm.di
 
 import com.yttydev.whm.presentation.practice.PracticeViewModel
 import com.yttydev.whm.presentation.statistics.StatisticsViewModel
-import com.yttydev.whm.AppViewModel
+import com.yttydev.whm.presentation.base.AppViewModel
 import com.yttydev.whm.navigation.AppNavigator
 import com.yttydev.whm.navigation.AppNavigatorImpl
 import com.yttydev.whm.presentation.exercises.ExercisesViewModel

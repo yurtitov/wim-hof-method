@@ -1,8 +1,8 @@
-package com.yttydev.whm
+package com.yttydev.whm.presentation.base
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -13,6 +13,7 @@ import com.yttydev.whm.navigation.Destination
 import com.yttydev.whm.navigation.NavHost
 import com.yttydev.whm.navigation.NavigationIntent
 import com.yttydev.whm.navigation.composable
+import com.yttydev.whm.presentation.base.view.BottomNavigationBar
 import com.yttydev.whm.presentation.exercises.ExercisesScreen
 import com.yttydev.whm.presentation.practice.PracticeScreen
 import com.yttydev.whm.presentation.profile.ProfileScreen
@@ -38,9 +39,9 @@ fun App() {
         )
 
         MaterialTheme {
-            Surface(
+            Scaffold(
                 modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colors.background
+                bottomBar = { BottomNavigationBar(navController) }
             ) {
                 NavHost(
                     navController = navController,
