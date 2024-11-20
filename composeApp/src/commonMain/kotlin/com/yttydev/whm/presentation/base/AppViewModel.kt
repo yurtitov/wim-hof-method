@@ -1,4 +1,4 @@
-package com.yttydev.whm
+package com.yttydev.whm.presentation.base
 
 import androidx.lifecycle.ViewModel
 import com.yttydev.whm.navigation.AppNavigator
