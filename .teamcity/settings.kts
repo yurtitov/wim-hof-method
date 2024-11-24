@@ -21,12 +21,12 @@ object Validate : BuildType({
         gradle {
             id = "Unit tests"
             tasks = "assembleUnitTest"
-            gradleWrapperPath = ""
+            useGradleWrapper = true
         }
         gradle {
             id = "Build"
-            tasks = "clean build -PskipTests=true"
-            gradleWrapperPath = ""
+            tasks = "clean build -x test"
+            useGradleWrapper = true
         }
     }
 
