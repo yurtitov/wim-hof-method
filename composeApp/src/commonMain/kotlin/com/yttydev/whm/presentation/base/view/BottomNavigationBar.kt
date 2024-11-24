@@ -50,7 +50,7 @@ fun BottomNavigationBar(
                 selected = currentDestination?.hierarchy?.any { it.hasRoute(topLevelRoute.destination.fullRoute::class) } == true,
                 onClick = {
                     navController.navigate(topLevelRoute.destination.fullRoute) {
-                        popUpTo(navController.graph.findStartDestination().id) {
+                        popUpTo(Destination.ExercisesScreen.fullRoute) {
                             saveState = true
                         }
                         launchSingleTop = true
