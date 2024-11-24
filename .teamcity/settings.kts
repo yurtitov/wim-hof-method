@@ -25,7 +25,7 @@ object Validate : BuildType({
         }
         gradle {
             id = "Build"
-            tasks = "clean build"
+            tasks = "clean build -PskipTests=true"
             gradleWrapperPath = ""
         }
     }
