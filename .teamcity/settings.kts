@@ -19,8 +19,8 @@ object Validate : BuildType({
 
     steps {
         gradle {
-            id = "Tests"
-            tasks = "allTests"
+            id = "Unit tests"
+            tasks = "assembleUnitTest"
             gradleWrapperPath = ""
         }
         gradle {
