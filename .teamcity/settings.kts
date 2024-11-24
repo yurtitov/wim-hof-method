@@ -25,7 +25,7 @@ object Validate : BuildType({
         }
         gradle {
             id = "Build"
-            tasks = "clean build -x test"
+            tasks = "clean build -x test -x wasmJsBrowserTest"
             useGradleWrapper = true
         }
     }
