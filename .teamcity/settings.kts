@@ -7,7 +7,7 @@ version = "2024.03"
 
 project {
 
-    buildType(Build)
+    buildType(Validate)
 }
 
 object Validate : BuildType({
@@ -24,7 +24,7 @@ object Validate : BuildType({
             gradleWrapperPath = ""
         }
         gradle {
-            id = "Buildr"
+            id = "Build"
             tasks = "clean build"
             gradleWrapperPath = ""
         }
