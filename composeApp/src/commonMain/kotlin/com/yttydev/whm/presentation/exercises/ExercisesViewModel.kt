@@ -3,7 +3,9 @@ package com.yttydev.whm.presentation.exercises
 import com.yttydev.whm.navigation.AppNavigator
 import com.yttydev.whm.navigation.Destination
 import com.yttydev.whm.presentation.base.mvi.BaseViewModel
-import com.yttydev.whm.presentation.base.mvi.Reducer
+import com.yttydev.whm.presentation.base.mvi.ViewEffect
+import com.yttydev.whm.presentation.base.mvi.ViewEvent
+import com.yttydev.whm.presentation.base.mvi.ViewState
 
 class ExercisesViewModel(
     private val appNavigator: AppNavigator
@@ -33,13 +35,13 @@ class ExercisesViewModel(
 
     data class State(
         val isBreathButtonVisible: Boolean = true,
-    ) : Reducer.ViewState
+    ) : ViewState
 
-    sealed class Event : Reducer.ViewEvent {
+    sealed class Event : ViewEvent {
         data object BreathButtonClicked : Event()
     }
 
-    sealed class Effect : Reducer.ViewEffect {
+    sealed class Effect : ViewEffect {
         data object NavigateToBreathPractice : Effect()
     }
 }

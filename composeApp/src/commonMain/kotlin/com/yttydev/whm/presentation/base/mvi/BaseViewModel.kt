@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<State : Reducer.ViewState, Event : Reducer.ViewEvent, Effect : Reducer.ViewEffect>(
+abstract class BaseViewModel<State : ViewState, Event : ViewEvent, Effect : ViewEffect>(
     initialState: State,
 ) : ViewModel(), Reducer<State, Event, Effect>, Finalizer<Effect> {
 

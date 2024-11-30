@@ -1,6 +1,6 @@
 package com.yttydev.whm.presentation.base.mvi
 
-class TimeMachineImpl<State : Reducer.ViewState>(
+class TimeMachineImpl<State : ViewState>(
     override val storeState: (storedState: State) -> Unit
 ) : TimeMachine<State> {
 
