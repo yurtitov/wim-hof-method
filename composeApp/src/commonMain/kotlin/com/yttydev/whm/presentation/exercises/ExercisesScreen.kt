@@ -9,14 +9,18 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.compose.viewmodel.koinViewModel
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun ExercisesScreen() {
-    val vm = koinViewModel<ExercisesViewModel>()
+fun ExercisesScreen(
+    stateFlow: StateFlow<ExercisesViewModel.State>,
+    onEvent: (event: ExercisesViewModel.Event) -> Unit
+) {
+    val state by stateFlow.collectAsState()
 
     Scaffold(
         modifier = Modifier
@@ -27,9 +31,11 @@ fun ExercisesScreen() {
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            StartButton(
-                text = "Breathing"
-            )
+            if (state.isBreathButtonVisible) {
+                StartButton(
+                    text = "Breathing",
+                    onClick = { onEvent(ExercisesViewModel.Event.BreathButtonClicked) })
+            }
             StartButton(text = "Cold shower")
             StartButton(text = "Explore exercises")
         }
@@ -55,12 +61,4 @@ private fun StartButton(
             modifier = Modifier.padding(16.dp)
         )
     }
-}
-
-@Preview
-@Composable
-fun StartButtonPreview() {
-    StartButton(
-        text = "Some button"
-    )
 }

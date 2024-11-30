@@ -15,6 +15,7 @@ import com.yttydev.whm.navigation.composable
 import com.yttydev.whm.presentation.base.theme.AppTheme
 import com.yttydev.whm.presentation.base.view.BottomNavigationBar
 import com.yttydev.whm.presentation.exercises.ExercisesScreen
+import com.yttydev.whm.presentation.exercises.ExercisesViewModel
 import com.yttydev.whm.presentation.practice.PracticeScreen
 import com.yttydev.whm.presentation.profile.ProfileScreen
 import com.yttydev.whm.presentation.statistics.StatisticsScreen
@@ -48,7 +49,11 @@ fun App() {
                     startDestination = Destination.ExercisesScreen
                 ) {
                     composable(destination = Destination.ExercisesScreen) {
-                        ExercisesScreen()
+                        val vm = koinViewModel<ExercisesViewModel>()
+                        ExercisesScreen(
+                            stateFlow = vm.state,
+                            onEvent = vm::sendEvent
+                        )
                     }
                     composable(destination = Destination.PracticeDetailsScreen) {
                         PracticeScreen()

@@ -1,30 +1,45 @@
 package com.yttydev.whm.presentation.exercises
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.yttydev.whm.navigation.AppNavigator
 import com.yttydev.whm.navigation.Destination
-import kotlinx.coroutines.launch
+import com.yttydev.whm.presentation.base.mvi.BaseViewModel
+import com.yttydev.whm.presentation.base.mvi.Reducer
 
 class ExercisesViewModel(
     private val appNavigator: AppNavigator
-) : ViewModel() {
+) : BaseViewModel<ExercisesViewModel.State, ExercisesViewModel.Event, ExercisesViewModel.Effect>(
+    State()
+) {
 
-    fun onNavigateToPractice() {
-        viewModelScope.launch {
-            appNavigator.navigateTo(Destination.PracticeDetailsScreen.fullRoute)
+    override suspend fun reduce(event: Event): Pair<State, Effect?> {
+        return when (event) {
+            is Event.BreathButtonClicked -> onBreathButtonClicked()
         }
     }
 
-    fun onNavigateToStatistics() {
-        viewModelScope.launch {
-            appNavigator.navigateTo(Destination.StatisticsScreen.fullRoute)
+    override suspend fun finalize(effect: Effect) {
+        when (effect) {
+            is Effect.NavigateToBreathPractice -> appNavigator.navigateTo(
+                Destination.PracticeDetailsScreen.fullRoute
+            )
         }
     }
 
-    fun onNavigateToProfile() {
-        viewModelScope.launch {
-            appNavigator.navigateTo(Destination.ProfileScreen.fullRoute)
+    private suspend fun onBreathButtonClicked(): Pair<State, Effect?> {
+        lastState().let { lastState ->
+            return lastState.copy() to Effect.NavigateToBreathPractice
         }
+    }
+
+    data class State(
+        val isBreathButtonVisible: Boolean = true,
+    ) : Reducer.ViewState
+
+    sealed class Event : Reducer.ViewEvent {
+        data object BreathButtonClicked : Event()
+    }
+
+    sealed class Effect : Reducer.ViewEffect {
+        data object NavigateToBreathPractice : Effect()
     }
 }
